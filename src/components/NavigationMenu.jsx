@@ -1,19 +1,17 @@
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
-import Orders from "./Orders";
-import Products from "./Products";
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import AnimatedRoutes from "./AnimatedRoutes";
 
 const NavigationMenu = () => (
     <Router>
         <nav>
-            <Link to="/orders">Orders</Link>
-            <Link to="/products">Products</Link>
+            <NavLink to="/orders" className={({ isActive }) => isActive ? "active" : ""}>
+                Orders
+            </NavLink>
+            <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>
+                Products
+            </NavLink>
         </nav>
-        <Routes>
-            {/* Redirect root path to /orders */}
-            <Route path="/" element={<Navigate to="/orders" />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/products" element={<Products />} />
-        </Routes>
+        <AnimatedRoutes />
     </Router>
 );
 
