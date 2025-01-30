@@ -19,12 +19,12 @@ const TopMenu = () => {
         <header className="top-menu">
             <div className="container">
                 <div className="row">
-                    <div className="logo">
+                    <div className="col-md-4 logo">
                         <img src="/inventory.svg" alt="inventory img"/>
                         <strong>Inventory</strong>
                     </div>
 
-                    <div className="search">
+                    <div className="col-md-4 search">
                         <input
                             type="text"
                             placeholder="Search..."
@@ -32,13 +32,13 @@ const TopMenu = () => {
                         />
                     </div>
 
-                    <div className="date">
+                    <div className="col-md-4 date">
                         <p className="day">{day}</p>
                         <div className="time">
                             <span>{date}</span>
 
                             <p>
-                                <img src="/public/clock.svg" alt="clock"/>
+                                <img src="/clock.svg" alt="clock"/>
                                 <span>{formattedTime}</span>
                             </p>
                         </div>
