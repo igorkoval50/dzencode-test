@@ -1,5 +1,5 @@
 const Products = () => (
-    <h2>Products</h2>
+    <h1>Группы</h1>
 );
 
 export default Products;
