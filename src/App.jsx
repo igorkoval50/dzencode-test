@@ -1,10 +1,9 @@
+import TopMenu from './components/TopMenu.jsx';
+
 function App() {
   return (
       <>
-          <div className="container">
-              <h1>tester</h1>
-              <p>test</p>
-          </div>
+          <TopMenu />
       </>
   )
 }
