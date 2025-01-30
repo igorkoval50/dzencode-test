@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTime } from "../reducer/timeSlice";
 
 const TopMenu = () => {
-    const [time, setTime] = useState(new Date());
+    const dispatch = useDispatch();
+    const time = useSelector((state) => state.time.time);
 
     useEffect(() => {
-        const interval = setInterval(() => setTime(new Date()), 1000);
+        const interval = setInterval(() => {
+            dispatch(updateTime());
+        }, 1000);
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
+        return () => clearInterval(interval);
+    }, [dispatch]);
 
-    const day = time.toLocaleDateString('uk-UA', { weekday: 'long' }); // day
-    const date = time.toLocaleDateString('uk-UA', { day: '2-digit', month: 'short' }); // date
-    const formattedTime = time.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' }); // hours
+    const day = time.toLocaleDateString('uk-UA', { weekday: 'long' });
+    const date = time.toLocaleDateString('uk-UA', { day: '2-digit', month: 'short' });
+    const formattedTime = time.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
 
     return (
         <header className="top-menu">
@@ -36,7 +39,6 @@ const TopMenu = () => {
                         <p className="top-menu__day">{day}</p>
                         <div className="top-menu__time">
                             <span>{date}</span>
-
                             <p className="top-menu__time-text">
                                 <img src="/clock.svg" alt="clock"/>
                                 <span>{formattedTime}</span>
