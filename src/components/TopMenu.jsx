@@ -17,27 +17,27 @@ const TopMenu = () => {
 
     return (
         <header className="top-menu">
-            <div className="container">
+            <div className="top-menu__container container">
                 <div className="row">
-                    <div className="col-md-4 logo">
+                    <div className="col-md-4 top-menu__logo">
                         <img src="/inventory.svg" alt="inventory img"/>
-                        <strong>Inventory</strong>
+                        <strong className="top-menu__logo-text">Inventory</strong>
                     </div>
 
-                    <div className="col-md-4 search">
+                    <div className="col-md-4 top-menu__search">
                         <input
                             type="text"
                             placeholder="Search..."
-                            className="search-input"
+                            className="top-menu__search-input"
                         />
                     </div>
 
-                    <div className="col-md-4 date">
-                        <p className="day">{day}</p>
-                        <div className="time">
+                    <div className="col-md-4 top-menu__date">
+                        <p className="top-menu__day">{day}</p>
+                        <div className="top-menu__time">
                             <span>{date}</span>
 
-                            <p>
+                            <p className="top-menu__time-text">
                                 <img src="/clock.svg" alt="clock"/>
                                 <span>{formattedTime}</span>
                             </p>
