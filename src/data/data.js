@@ -46,7 +46,7 @@ export const products = [
     id: 2,
     serialNumber: 1234,
     isNew: 1,
-    photo: 'pathToFile.jpg',
+    photo: '/products/product-3.jpg',
     title: 'Product 1',
     type: 'Monitors',
     specification: 'Specification 1',

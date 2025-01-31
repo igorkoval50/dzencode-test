@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    time: new Date(),
+    time: Date.now() // Store as a timestamp
 };
 
 const timeSlice = createSlice({
@@ -9,9 +9,9 @@ const timeSlice = createSlice({
     initialState,
     reducers: {
         updateTime: (state) => {
-            state.time = new Date();
-        },
-    },
+            state.time = Date.now(); // Update time as timestamp
+        }
+    }
 });
 
 export const { updateTime } = timeSlice.actions;

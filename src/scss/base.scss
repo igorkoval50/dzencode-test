@@ -1,10 +1,9 @@
 /* Bootstrap */
-@import "bootstrap/scss/functions"; // Import Bootstrap functions
-@import "bootstrap/scss/variables"; // Import Bootstrap variables
-@import "bootstrap/scss/mixins";    // Import Bootstrap mixins
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 
 /* Layout */
-@import "bootstrap/scss/mixins";
 @import "layout/color";
 @import "layout/fonts";
 @import "layout/container";

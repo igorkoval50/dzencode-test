@@ -4,7 +4,7 @@ import { updateTime } from "../reducer/timeSlice";
 
 const TopMenu = () => {
     const dispatch = useDispatch();
-    const time = useSelector((state) => state.time.time);
+    const time = useSelector((state) => new Date(state.time.time)); // Convert timestamp to Date
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -14,9 +14,9 @@ const TopMenu = () => {
         return () => clearInterval(interval);
     }, [dispatch]);
 
-    const day = time.toLocaleDateString('uk-UA', { weekday: 'long' });
-    const date = time.toLocaleDateString('uk-UA', { day: '2-digit', month: 'short' });
-    const formattedTime = time.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+    const day = time.toLocaleDateString("uk-UA", { weekday: "long" });
+    const date = time.toLocaleDateString("uk-UA", { day: "2-digit", month: "short" });
+    const formattedTime = time.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" });
 
     return (
         <header className="top-menu">

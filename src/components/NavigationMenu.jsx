@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import AnimatedRoutes from "./AnimatedRoutes";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap styles
 
 const NavigationMenu = () => (
     <Router>
@@ -9,13 +8,13 @@ const NavigationMenu = () => (
             <div className="bg-sidebar text-white p-3">
                 <nav>
                     <NavLink
-                        to="/orders"
+                        to="/products"
                         className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                         <span>Приход</span>
                     </NavLink>
 
                     <NavLink
-                        to="/products"
+                        to="/orders"
                         className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                        <span>Группы</span>
                     </NavLink>

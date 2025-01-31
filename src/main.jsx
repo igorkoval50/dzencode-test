@@ -7,7 +7,9 @@ import store from "./reducer/store.js";
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </StrictMode>
 )
