@@ -8,7 +8,6 @@ const Products = () => {
         <div className="products">
             {orders.map(order => (
                 <div key={order.id} className="order-products">
-                    {/* Map through the products for each order */}
                     {order.products && order.products.map(product => (
                         <Product key={product.id} product={product} />
                     ))}
