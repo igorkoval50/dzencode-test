@@ -1,14 +1,14 @@
 // src/uploadProducts.js
 import { db } from './firebase.js';
 import { collection, doc, writeBatch } from 'firebase/firestore';
-import { products, orders } from "./data.js";
+import { products1, products2, products3 } from "./data.js";
 
 // Function to upload all products
 export const uploadProducts = async (orderId) => {
     const productsCollectionRef = collection(db, `orders/${orderId}/products`);
     const batch = writeBatch(db); // Create a batch operation
 
-    products.forEach(product => {
+    products3.forEach(product => {
         const productDocRef = doc(productsCollectionRef, product.id);
         batch.set(productDocRef, product);  // Add the product to the batch
     });
