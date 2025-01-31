@@ -3,7 +3,7 @@ import AnimatedRoutes from "./AnimatedRoutes";
 
 const NavigationMenu = () => (
     <Router>
-        <div className="d-flex">
+        <div className="d-flex wrapper-main">
             {/* Sidebar */}
             <div className="bg-sidebar text-white p-3">
                 <nav>
@@ -22,7 +22,7 @@ const NavigationMenu = () => (
             </div>
 
             {/* Main Content */}
-            <div className="flex-grow-1 p-3">
+            <div className="flex-grow-1 main-wrapper p-3">
                 <AnimatedRoutes />
             </div>
         </div>

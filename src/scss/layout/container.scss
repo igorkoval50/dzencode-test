@@ -1,3 +1,24 @@
 body {
   background: $background-color;
 }
+
+.wrapper-main {
+  @include media-breakpoint-down(xl) {
+   flex-wrap: wrap;
+  }
+}
+
+.container {
+  @include media-breakpoint-down(xl) {
+    max-width: 100%;
+  }
+}
+
+.main-wrapper {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.product-wrapper {
+  max-width: 1200px;
+}

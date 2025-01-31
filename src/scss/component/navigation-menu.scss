@@ -1,9 +1,14 @@
 .bg-sidebar {
   background: $background-sidebar;
-  min-width: 250px;
-  width: 30%;
-  min-height: 100vh;
-  height: auto;
+  width: 100%;
+  max-width: 100%;
+
+  @include media-breakpoint-up(xl) {
+    min-width: 250px;
+    width: 30%;
+    min-height: 100vh;
+    height: auto;
+  }
 
   .nav-link {
     color: $text-color;
@@ -11,8 +16,16 @@
     text-align: center;
     padding: 4px 0;
 
+    @include media-breakpoint-down(xl) {
+      font-size: 12px;
+    }
+
     &:not(:first-child) {
       margin-top: 20px;
+
+      @include media-breakpoint-down(xl) {
+        margin: 0 0 0 14px;
+      }
     }
 
     span {
@@ -25,6 +38,14 @@
       span {
         border-bottom: 2px solid $green-dark;
       }
+    }
+  }
+
+  nav {
+    @include media-breakpoint-down(xl) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
