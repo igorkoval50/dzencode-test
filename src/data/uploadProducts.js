@@ -1,7 +1,7 @@
 // src/uploadProducts.js
 import { db } from './firebase.js';
 import { collection, doc, writeBatch } from 'firebase/firestore';
-import { products } from "./data.js";
+import { products, orders } from "./data.js";
 
 // Function to upload all products
 export const uploadProducts = async (orderId) => {
