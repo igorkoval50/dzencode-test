@@ -2,7 +2,8 @@
   background: $background-sidebar;
   min-width: 250px;
   width: 30%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 
   .nav-link {
     color: $text-color;
