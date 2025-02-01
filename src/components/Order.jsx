@@ -1,9 +1,7 @@
 const Order = ({id, title, date, description}) => {
     return (
         <div id={id} className="order">
-            <p>{title}</p>
-            <p>{date}</p>
-            <p>{description}</p>
+           <h4>{title}</h4>
         </div>
     );
 }
