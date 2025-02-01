@@ -1,10 +1,11 @@
 import useOrders from '../hook/useOrders.js';
 import Order from "./Order.jsx";
 import Product from "./Product.jsx";
-import Filters from "./Filters.jsx";
+import useDeleteProduct from "../hook/useDeleteProduct.js";
 
 const Orders = () => {
-    const orders = useOrders("orders");
+    const {orders, setOrders } = useOrders("orders");
+    const { handleDeleteProduct } = useDeleteProduct(setOrders);
 
     return (
         <div className="orders">
@@ -14,7 +15,7 @@ const Orders = () => {
 
                     <div key={order.id} className="order-products">
                         {order.products && order.products.map(product => (
-                            <Product key={product.id} product={product}/>
+                            <Product key={product.id} product={product} onDelete={handleDeleteProduct} />
                         ))}
                     </div>
                 </>

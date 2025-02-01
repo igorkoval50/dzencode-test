@@ -2,20 +2,14 @@ import { useState } from 'react';
 import useOrders from '../hook/useOrders.js';
 import Product from "./Product.jsx";
 import Filters from "./Filters.jsx";
+import useDeleteProduct from '../hook/useDeleteProduct.js';
 
 const Products = () => {
     const {orders, setOrders} = useOrders("orders");
     const [selectedType, setSelectedType] = useState("");
     const [selectedSpecification, setSelectedSpecification] = useState("");
 
-    const handleDeleteProduct = (id) => {
-        setOrders((prevOrders) =>
-            prevOrders.map((order) => ({
-                ...order,
-                products: order.products.filter((product) => product.id !== id),
-            }))
-        );
-    };
+    const { handleDeleteProduct } = useDeleteProduct(setOrders);
 
     const filteredOrders = orders
         .map((order) => ({
