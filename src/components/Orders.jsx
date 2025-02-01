@@ -15,7 +15,7 @@ const Orders = () => {
 
                     <div key={order.id} className="order-products">
                         {order.products && order.products.map(product => (
-                            <Product key={product.id} product={product} onDelete={handleDeleteProduct} />
+                            <Product key={product.id} product={product}  onDelete={() => handleDeleteProduct(order.id, product.id)} />
                         ))}
                     </div>
                 </>

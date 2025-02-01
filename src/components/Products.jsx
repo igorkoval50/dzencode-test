@@ -5,7 +5,7 @@ import Filters from "./Filters.jsx";
 import useDeleteProduct from '../hook/useDeleteProduct.js';
 
 const Products = () => {
-    const {orders, setOrders} = useOrders("orders");
+    const { orders, setOrders } = useOrders("orders");
     const [selectedType, setSelectedType] = useState("");
     const [selectedSpecification, setSelectedSpecification] = useState("");
 
@@ -36,7 +36,11 @@ const Products = () => {
                 {filteredOrders.map((order) => (
                     <div key={order.id} className="order-products">
                         {order.products.map((product) => (
-                            <Product key={product.id} product={product} onDelete={handleDeleteProduct} />
+                            <Product
+                                key={product.id}
+                                product={product}
+                                onDelete={() => handleDeleteProduct(order.id, product.id)}
+                            />
                         ))}
                     </div>
                 ))}
