@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const Filters = ({ orders, onTypeChange, onSpecificationChange }) => {
-    const [filteredProducts, setFilteredProducts] = useState([]);
     const [selectedType, setSelectedType] = useState("");
     const [selectedSpecification, setSelectedSpecification] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const products = orders.flatMap(order => order.products);
-    const uniqueTypes = [...new Set(products.map(product => product.type))];
-    const uniqueSpecifications = [...new Set(products.map(product => product.specification))];
+    // Memoize the products array to prevent recalculating on every render
+    const products = useMemo(() => orders.flatMap(order => order.products), [orders]);
+    const uniqueTypes = useMemo(() => [...new Set(products.map(product => product.type))], [products]);
+    const uniqueSpecifications = useMemo(() => [...new Set(products.map(product => product.specification))], [products]);
 
     // Update filtered products based on selected filters
     useEffect(() => {
         let filtered = products;
-
+        
         if (selectedType) {
             filtered = filtered.filter(product => product.type === selectedType);
         }
@@ -21,8 +22,18 @@ const Filters = ({ orders, onTypeChange, onSpecificationChange }) => {
             filtered = filtered.filter(product => product.specification === selectedSpecification);
         }
 
-        setFilteredProducts(filtered);
-    }, [selectedType, selectedSpecification, products]);
+        setFilteredProducts(filtered); // Update the filtered products state
+    }, [selectedType, selectedSpecification, products]); // Only depend on the state that actually changes
+
+    const handleTypeChange = (value) => {
+        setSelectedType(value);
+        onTypeChange(value); // Notify parent component
+    };
+
+    const handleSpecificationChange = (value) => {
+        setSelectedSpecification(value);
+        onSpecificationChange(value); // Notify parent component
+    };
 
     return (
         <div className="filter">
@@ -37,11 +48,7 @@ const Filters = ({ orders, onTypeChange, onSpecificationChange }) => {
                     name="type"
                     id="type"
                     value={selectedType}
-                    onChange={(e) => {
-                        const newType = e.target.value;
-                        setSelectedType(newType); // Update selected type
-                        onTypeChange(newType); // Notify parent component
-                    }}
+                    onChange={(e) => handleTypeChange(e.target.value)} // Update the local state
                 >
                     <option value="">All Types</option>
                     {uniqueTypes.map((type, index) => (
@@ -59,11 +66,7 @@ const Filters = ({ orders, onTypeChange, onSpecificationChange }) => {
                     name="specification"
                     id="specification"
                     value={selectedSpecification}
-                    onChange={(e) => {
-                        const newSpec = e.target.value;
-                        setSelectedSpecification(newSpec); // Update selected specification
-                        onSpecificationChange(newSpec); // Notify parent component
-                    }}
+                    onChange={(e) => handleSpecificationChange(e.target.value)} // Update the local state
                 >
                     <option value="">All Specifications</option>
                     {uniqueSpecifications.map((specification, index) => (
