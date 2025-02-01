@@ -1,5 +1,7 @@
 .top-menu {
   background: $background-light;
+  position: relative;
+  z-index: 10;
 
   &__container {
     padding-top: 15px;

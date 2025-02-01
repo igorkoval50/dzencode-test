@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import useDateFormatter from "../hook/useDateFormatter.js";
+import useDateFormatter from '../hook/useDateFormatter.js';
+import Modal from './Modal.jsx'; // Import the Modal component
 
-const Product = ({ product }) => {
+const Product = ({ product, onDelete }) => {
     const {
         id,
         date,
@@ -11,10 +13,27 @@ const Product = ({ product }) => {
         price,
         serialNumber,
         title,
-        type
+        type,
     } = product;
 
     const { formatDate, formatDateDay } = useDateFormatter();
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+
+    // Function to open the modal
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    // Function to close the modal
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    // Function to handle product deletion
+    const handleDeleteProduct = () => {
+        onDelete(id);
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="product-wrapper mt-2" id={id}>
@@ -79,13 +98,21 @@ const Product = ({ product }) => {
 
                     {/* Add to cart button */}
                     <td>
-                        <button className="product__button">
+                        <button className="product__button" onClick={handleOpenModal}>
                             <i className="bi bi-cart"></i>
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+            {/* Modal for delete confirmation */}
+            <Modal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={handleDeleteProduct}
+                product={product}
+            />
         </div>
     );
 };

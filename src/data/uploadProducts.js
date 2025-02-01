@@ -6,15 +6,15 @@ import { products1, products2, products3 } from "./data.js";
 // Function to upload all products
 export const uploadProducts = async (orderId) => {
     const productsCollectionRef = collection(db, `orders/${orderId}/products`);
-    const batch = writeBatch(db); // Create a batch operation
+    const batch = writeBatch(db);
 
     products3.forEach(product => {
         const productDocRef = doc(productsCollectionRef, product.id);
-        batch.set(productDocRef, product);  // Add the product to the batch
+        batch.set(productDocRef, product);
     });
 
     try {
-        await batch.commit();  // Execute the batch
+        await batch.commit();
         console.log('All products uploaded successfully');
     } catch (err) {
         console.error('Error uploading products: ', err);

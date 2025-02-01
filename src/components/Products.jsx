@@ -4,9 +4,18 @@ import Product from "./Product.jsx";
 import Filters from "./Filters.jsx";
 
 const Products = () => {
-    const orders = useOrders("orders");
+    const {orders, setOrders} = useOrders("orders");
     const [selectedType, setSelectedType] = useState("");
     const [selectedSpecification, setSelectedSpecification] = useState("");
+
+    const handleDeleteProduct = (id) => {
+        setOrders((prevOrders) =>
+            prevOrders.map((order) => ({
+                ...order,
+                products: order.products.filter((product) => product.id !== id),
+            }))
+        );
+    };
 
     const filteredOrders = orders
         .map((order) => ({
@@ -33,13 +42,13 @@ const Products = () => {
                 {filteredOrders.map((order) => (
                     <div key={order.id} className="order-products">
                         {order.products.map((product) => (
-                            <Product key={product.id} product={product} />
+                            <Product key={product.id} product={product} onDelete={handleDeleteProduct} />
                         ))}
                     </div>
                 ))}
             </div>
         </>
     );
-}
+};
 
 export default Products;

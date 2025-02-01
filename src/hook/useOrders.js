@@ -36,7 +36,7 @@ const useOrders = (collectionPath) => {
         getData();
     }, [getData]);
 
-    return orders;
+    return { orders, setOrders };
 };
 
 export default useOrders;
