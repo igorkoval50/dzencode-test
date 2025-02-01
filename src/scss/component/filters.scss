@@ -1,0 +1,19 @@
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+
+  span {
+    margin-right: 6px;
+    color: $background-light;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 2px 10px;
+    border: 0;
+    outline: none;
+  }
+}

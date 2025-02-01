@@ -1,11 +1,10 @@
 import useOrders from '../hook/useOrders.js';
 import Order from "./Order.jsx";
 import Product from "./Product.jsx";
+import Filters from "./Filters.jsx";
 
 const Orders = () => {
     const orders = useOrders("orders");
-
-    console.log(orders);
 
     return (
         <div className="orders">
