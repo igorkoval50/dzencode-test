@@ -48,4 +48,21 @@
       justify-content: center;
     }
   }
+
+  .person {
+    display: none;
+
+    @include media-breakpoint-up(xl) {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
 }

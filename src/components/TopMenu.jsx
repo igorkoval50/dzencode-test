@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTime } from "../reducer/timeSlice";
+import Search from "./Search.jsx";
 
 const TopMenu = () => {
     const dispatch = useDispatch();
@@ -27,13 +28,7 @@ const TopMenu = () => {
                         <strong className="top-menu__logo-text">Inventory</strong>
                     </div>
 
-                    <div className="col-md-4 top-menu__search">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="top-menu__search-input"
-                        />
-                    </div>
+                    <Search />
 
                     <div className="col-md-4 top-menu__date">
                         <p className="top-menu__day">{day}</p>

@@ -6,6 +6,10 @@ const NavigationMenu = () => (
         <div className="d-flex wrapper-main">
             {/* Sidebar */}
             <div className="bg-sidebar text-white p-3">
+                <div className="person">
+                    <img src="/face.jpeg" alt="person"/>
+                </div>
+
                 <nav>
                     <NavLink
                         to="/products"
