@@ -52,3 +52,5 @@ If you encounter any issues:
 
 For additional help, refer to the project documentation or open an issue.
 
+## Live Demo
+Check out the live version of the project here: [Live Demo](https://tranquil-mermaid-016ae8.netlify.app/products)
